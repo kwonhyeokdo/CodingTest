@@ -5,6 +5,7 @@ import java.io.OutputStreamWriter;
 
 public final class Main {
     private int N;
+    private long[] memo;
 
     public static final void main(String[] args) throws Exception {
         new Main().solution();
@@ -15,22 +16,34 @@ public final class Main {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
+        memo = new long[N + 1];
+        for(int i = 0; i < N + 1; i++){
+            memo[i] = -1;
+        }
+
+        final long answer = dp(N);
+
+        bw.write(String.valueOf(answer));
 
         bw.flush();
         bw.close();
         br.close();
     }
 
-    private final int dp(final int beforeNumber, final int currentIndex){
-        if(currentIndex == N){
-            return 0;
+    private final long dp(final int digit) {
+        if(digit == 1){
+            return 1;
         }
-        if(currentIndex ==  0){
-            
+        if(digit == 2){
+            return 1;
         }
 
-        int result = 0;
+        if(memo[digit] != -1){
+            return memo[digit];
+        }
 
-        return result;
+        memo[digit] = dp(digit - 2) + dp(digit - 1);
+
+        return memo[digit];
     }
 }
