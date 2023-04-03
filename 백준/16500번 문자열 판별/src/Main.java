@@ -2,15 +2,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class Main {
-    private String S = null;
-    private Set<String> wordSet = null;
-    private boolean memo[] = null;
-
     public static void main(String[] args) throws Exception {
         new Main().solution();
     }
@@ -19,9 +14,9 @@ public final class Main {
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        S = br.readLine();
+        final String S = br.readLine();
         final int N = Integer.parseInt(br.readLine());
-        memo = new boolean[S.length()];
+        final boolean memo[] = new boolean[S.length()];
         boolean isAnswer = false;
         Set<String> wordSet = new HashSet<>();
         for(int i = 0 ; i < N; i++){
