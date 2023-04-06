@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 
 public class SettingProperties {
     private ImportBaseEnum importBase = null;
@@ -43,5 +43,15 @@ public class SettingProperties {
 
     public void setOutputFileNames(String[] outputFileNames) {
         this.outputFileNames = outputFileNames;
+    }
+
+    @Override
+    public String toString() {
+        return "==========[SettingProperties]=========="
+             + "\nimportBase = " + importBase
+             + "\nimportContents = " + Arrays.toString(importContents)
+             + "\noutputDirectory = " + outputDirectory
+             + "\noutputFileNames = " + Arrays.toString(outputFileNames)
+             + "\n=======================================";
     }
 }

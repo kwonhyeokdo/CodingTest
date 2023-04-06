@@ -1,5 +1,6 @@
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +23,9 @@ import java.util.Properties;
 // # - 여래개일 경우 쉼표(,)로 구분한다.
 // OUPUT_FILE_NAME = ShuffleProblem{Date}
 public final class SettingPropertiesImporter {
+    private static final String ENCODING = "UTF-8"; 
     static final SettingProperties of(final String filePath) throws IOException, IllegalAccessException{
-        final FileReader fileReader = new FileReader(filePath);
+        final FileReader fileReader = new FileReader(filePath, Charset.forName(ENCODING));
 
         final Properties properties = new Properties();
         properties.load(fileReader);
