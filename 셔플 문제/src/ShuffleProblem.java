@@ -12,5 +12,6 @@ public final class ShuffleProblem {
         SettingProperties settingProperties = SettingPropertiesImporter.of(settingPropertiesPath);
         System.out.println(settingProperties.toString());
         //ProblemProcessor problemProcessor = new ProblemProcessor(settingProperties);
+        ProblemNameList problemNameList = new ProblemNameList(settingProperties);
     }
 }
