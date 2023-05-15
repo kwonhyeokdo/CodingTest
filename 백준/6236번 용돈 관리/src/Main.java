@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public final class Main{
-    private static final int MAX_COST = 100000 * 10000;
-
     public static void main(String[] args) throws Exception{
         new Main().solution();
     }
@@ -18,11 +16,12 @@ public final class Main{
         final int N = Integer.parseInt(inputNM[0]);
         final int M = Integer.parseInt(inputNM[1]);
         final int[] cost = new int[N];
-        int min = MAX_COST + 1;
-        int max = MAX_COST;
+        int min = 0;
+        int max = 1;
         for(int i = 0; i < N; i++){
             cost[i] = Integer.parseInt(br.readLine());
-            min = Math.min(min, cost[i]);
+            min = Math.max(min, cost[i]);
+            max += cost[i];
         }
 
         while(min + 1 < max){
@@ -31,24 +30,25 @@ public final class Main{
             int cnt = 0;
             int sum = 0;
             for(int i = 0; i < N; i++){
-                if(sum < cost[i]){
-                    cnt++;
-                    sum = mid;
-                }else{
+                if(mid < cost[i]){
+                    cnt = 0;
+                    break;
+                }else if(sum > cost[i]){
                     sum -= cost[i];
+                }else{
+                    cnt++;
+                    sum = mid - cost[i];
                 }
             }
 
-            System.out.println("min: " + min + ", max: " + max + ", mid: " + mid + ", cnt: " + cnt);
-
             if(cnt > M){
-                min = min + 1;
+                min = mid;
             }else{
                 max = mid;
             }
         }
 
-        bw.write(String.valueOf(max));
+        bw.write(String.valueOf(min));
         
         bw.flush();
         bw.close();
