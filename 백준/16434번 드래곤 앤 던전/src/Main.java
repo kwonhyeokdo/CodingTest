@@ -38,22 +38,19 @@ public final class Main{
                 final long a = tah[i][1];
                 long h = tah[i][2];
                 if(t == 1L){
-                    final long hitMonster = h / atk + (h % atk != 0 ? 1 : 0);
-                    final long hitHero = hp / t + (hp % t != 0 ? 1 : 0);
-                    System.out.println("hitMonster: " + hitMonster + ", hitHero: " + hitHero);
-                    if(hitHero >= hitMonster){
+                    final long heroAtkCnt = h / atk + (h % atk != 0 ? 1 : 0);
+                    final long monsterAtkCnt = hp / a + (hp % a != 0 ? 1 : 0);
+                    if(heroAtkCnt > monsterAtkCnt){
                         hp = 0;
                         break;
                     }else{
-                        hp -= a * (hitHero - 1);
+                        hp -= a * (heroAtkCnt - 1);
                     }
                 }else{
                     atk += a;
                     hp = Math.min(mid, hp + h);
                 }
             }
-
-            System.out.println("min: " + min + ", max: " + max + ", mid: " + mid + ", hp: " + hp);
 
             if(hp > 0){
                 max = mid;
