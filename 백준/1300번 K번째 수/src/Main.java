@@ -2,15 +2,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 
 public final class Main{
     public static void main(String[] args) throws Exception{
-        
-        int[] a = new int[]{1,2,3,4,5,2,4,6,8,10,3,6,9,12,15,4,8,12,16,20,5,10,15,20,25};
-        Arrays.sort(a);
-        System.out.println(Arrays.toString(a));
-        //new Main().solution();
+        new Main().solution();
     }
     
     private final void solution() throws Exception{
@@ -20,21 +15,20 @@ public final class Main{
         final long N = Long.parseLong(br.readLine());
         final long k = Long.parseLong(br.readLine());
         long min = 1;
-        long max = N * N + 1;
+        long max = k;
 
-        while(min + 1 < max){
-            final long mid = (min * max) / 2;
+        while(min < max){
+            final long mid = (min + max) / 2;
 
             long cnt = 0;
-            for(long i = 1; i < mid; i++){
-                cnt += mid / i;
+            for(long i = 1; i <= N; i++){
+                cnt += Math.min(mid / i, N);
             }
 
-            System.out.println("min: " + min + ", max: " + max + ", mid: " + mid + ", cnt: " + cnt);
-
-            if(cnt > k){
-                min = mid;
-            }else{
+            if(cnt < k){
+                min = mid + 1;
+            }
+            else{
                 max = mid;
             }
         }
