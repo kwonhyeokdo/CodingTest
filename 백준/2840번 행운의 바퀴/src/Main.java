@@ -38,7 +38,6 @@ public final class Main{
                 deque.add(deque.poll());
             }
             
-            /*
             final char poll = deque.poll();
             if(poll == '?'){
                 if(duplicate[c - 'A'] == 1){
@@ -50,21 +49,8 @@ public final class Main{
             }else if(poll != c){
                 isAnswer = false;
                 break;
-            }
-            */
-            
-            final char peek = deque.peek();
-            if(peek == '?'){
-                if(duplicate[c - 'A'] == 1){
-                    isAnswer = false;
-                    break;
-                }
-                deque.poll();
-                deque.addFirst(c);
-                duplicate[c - 'A'] = 1;
-            }else if(peek != c){
-                isAnswer = false;
-                break;
+            }else{
+                deque.addFirst(c);;
             }
         }
 
