@@ -14,19 +14,26 @@ public final class Main{
         final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while(true){
-            final String[] inputSplit = br.readLine().split(" ");
-            if("#".equals(inputSplit[0])){
+            final char[] inputChars = br.readLine().toCharArray();
+            if(inputChars.length == 1 && inputChars[0] == '#'){
                 break;
             }
-            final Stack<String> stack = new Stack<>();
-            for(String split : inputSplit){
-                if(split.startsWith("<")){
-                    // '<'와 '>'개수 검사
-                    
-                    if(split.endsWith("/>")){
 
-                    }
-                }
+            boolean isAnswer = true;
+
+            final Stack<String> stack = new Stack<>();
+            boolean isOpen = false;
+            for(int i = 0; i < inputChars.length; i++){
+                if(i < inputChars.length - 2){
+                    
+                } 
+            }
+            
+
+            if(isAnswer){
+                bw.write("legal\n");
+            }else{
+                bw.write("illegal\n");
             }
         }
         
