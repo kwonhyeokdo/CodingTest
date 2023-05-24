@@ -19,19 +19,22 @@ public final class Main{
         final String[] inputNK = br.readLine().split(" ");
         final int N = Integer.parseInt(inputNK[0]);
         final int K = Integer.parseInt(inputNK[1]);
-        List<Queue<Integer>> queList = new ArrayList<>();
+        long answer = 0;
+        final List<Queue<Integer>> queList = new ArrayList<>();
         for(int i = 0; i <= 20; i++){
             queList.add(new LinkedList<>());
         }
         for(int i = 0; i < N; i++){
             final int len = br.readLine().length();
-            queList.get(len).add(i);
+            final Queue<Integer> que = queList.get(len);
+            System.out.println("que: " + que);
+            while(!que.isEmpty() && que.peek() + K < len){
+                System.out.println("a");
+                que.poll();
+                answer += que.size();
+            }
+            que.add(i);
         }
-        for(int i = 0; i <= 20; i++){
-            System.out.println(queList.get(i));
-        }
-
-        long answer = 0;
 
         bw.write(String.valueOf(answer));
         
