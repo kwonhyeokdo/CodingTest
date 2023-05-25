@@ -27,12 +27,10 @@ public final class Main{
         for(int i = 0; i < N; i++){
             final int len = br.readLine().length();
             final Queue<Integer> que = queList.get(len);
-            System.out.println("que: " + que);
-            while(!que.isEmpty() && que.peek() + K < len){
-                System.out.println("a");
+            while(!que.isEmpty() && que.peek() + K < i){
                 que.poll();
-                answer += que.size();
             }
+            answer += que.size();
             que.add(i);
         }
 
